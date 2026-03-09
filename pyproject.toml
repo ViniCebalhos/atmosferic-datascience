@@ -1,0 +1,22 @@
+[tool.black]
+line-length = 79
+
+[tool.isort]
+profile = "black"
+line_length = 79
+
+[tool.pyright]
+include = ["src", "tests", "notebooks"]
+exclude = ["src/build", "src/play*"]
+extraPaths = ["src"]
+reportInvalidStringEscapeSequence = false
+
+[tool.pytest.ini_options]
+minversion = "6.0"
+pythonpath = [".", "src",]
+testpaths = ["tests",]
+addopts = ["--import-mode=importlib"]
+
+[tool.interrogate]
+ignore-magic = true
+

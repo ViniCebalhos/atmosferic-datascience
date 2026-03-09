@@ -1,0 +1,60 @@
+repos:
+
+  - repo: https://github.com/pycqa/isort
+    rev: 5.12.0
+    hooks:
+      - id: isort
+        description: Organizes imports.
+
+  - repo: https://github.com/psf/black
+    rev: 23.3.0
+    hooks:
+    - id: black
+    - id: black-jupyter
+      description: Formats files to pep8 convection.
+
+  - repo: https://github.com/pycqa/flake8
+    rev: 6.0.0
+    hooks:
+      - id: flake8
+        description: Checks pep8 conformities.
+        additional_dependencies:
+          - flake8-bugbear
+          - flake8-comprehensions
+          - flake8-simplify
+
+  - repo: local
+    hooks:
+      - id: pyright
+        name: pyright
+        description: Checks static typing.
+        entry: pyright
+        language: node
+        types: [ python ]
+        pass_filenames: false
+
+  - repo: local
+    hooks:
+      - id: jupyter-nb-clear-output
+        name: jupyter-nb-clear-output
+        description: Clears .ipynb files.
+        files: \.ipynb$
+        stages: [commit]
+        language: system
+        entry: python -m nbconvert --ClearOutputPreprocessor.enabled=True --inplace
+
+  - repo: https://github.com/econchick/interrogate
+    rev: 1.5.0
+    hooks:
+      - id: interrogate
+        name: Interrogate
+        description: Checks the docstring coverage.
+        args: [--fail-under=90, --verbose]
+
+  - repo: https://github.com/pycqa/pydocstyle
+    rev: 6.1.1
+    hooks:
+    - id: pydocstyle
+      name: pydocstyle
+      description: Checks docstring conventions.
+      args: [--convention, numpy, --explain, --verbose]

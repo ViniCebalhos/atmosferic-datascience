@@ -1,0 +1,47 @@
+# Parâmetros de nowcasting (precipitação com dados GOES)
+
+[geral]
+output_path_default = "./outputs"
+# db_path é o caminho base onde os dados serão armazenados/baixados
+db_path = "./data"
+# Domínio dos estados: [lon_min, lon_max, lat_min, lat_max]
+domain_BR = [-82, -31, -35, 15]
+domain_SP = [-53.0, -44.0, -26.0, -19.0]
+# Tempo de atraso para busca de arquivos (em minutos)
+look_behind_minutes = 240
+# Cache temporário para downloads (em horas)
+cache_max_age_hours = 24
+# Diretório do cache temporário
+cache_dir = "./cache"
+
+[goes]
+# Formato do nome do arquivo de entrada
+input_format = "OR_ABI-L2-RRQPEF-M6_G1[69]_s{date:%Y%j%H%M}*.nc"
+# Formato do nome do arquivo de saída
+output_format = "{:%Y%m%d%H%M}00_NOWCAST_GOES.nc"
+# Estrutura de diretórios onde os dados serão salvos
+dir_path = "goes/{date:%Y/%m/%d/}"
+# Frequência de amostragem dos dados (em minutos)
+freq = 10
+# Número de tempos necessários para previsão
+num_times_needed = 4
+# Priorizar GOES-19 sobre GOES-16
+prefer_goes19 = true
+# Número máximo de workers para download paralelo
+max_workers = 4
+# Método para cálculo de motion field (LK, etc)
+motion_method = "LK"
+# Método de extrapolação (sprog, anvil, etc)
+extrapolation_method = "sprog"
+# Threshold de precipitação para SPROG (mm/h)
+sprog_R_thr = 0.5
+# Número de timesteps para previsão (18 = 3 horas a cada 10 min)
+forecast_timesteps = 18
+
+[satelite]
+# Formato genérico para dados de satélite
+input_format = "satellite_{date:%Y%m%d_%H%M}.nc"
+output_format = "{:%Y%m%d%H%M}00_NOWCAST_SATELLITE.nc"
+dir_path = "satellite/{date:%Y/%m/%d/}"
+freq = 10
+

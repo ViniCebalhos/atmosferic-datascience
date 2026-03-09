@@ -1,0 +1,10 @@
+pysteps >= 1.9.0
+GOES >= 3.4.2
+opencv-python >= 4.9.0.80
+s3fs >= 2023.10.0
+pytz
+netCDF4 >= 1.6.0
+scipy
+matplotlib
+cartopy >= 0.22
+
