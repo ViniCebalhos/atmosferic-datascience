@@ -1,8 +1,19 @@
 # Satellite Nowcasting — Short-term precipitation forecasting with GOES
 
+![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)
+![License](https://img.shields.io/badge/license-MIT-green.svg)
+![CI](https://github.com/ViniCebalhos/atmosferic-datascience/actions/workflows/ci.yml/badge.svg)
+
 Pipeline de nowcasting de precipitação usando dados de satélite GOES (GOES-19 a partir de 2025, GOES-16 para datas anteriores). Inclui download, regrid para domínio configurável, motion field (Lucas-Kanade), extrapolação (SPROG) e saída em NetCDF e plots.
 
-O domínio padrão do exemplo é configurável via `src/parameters/nowcasting_params.toml` (ex.: `domain_SP` para região de interesse). Outros scripts do repositório (ex.: `get_goes16.py`) podem coexistir na raiz.
+O domínio padrão do exemplo é configurável via `src/parameters/nowcasting_params.toml` (ex.: `domain_SP` para região de interesse).
+
+---
+
+## Resultado
+
+<!-- TODO: adicionar GIF/PNG de exemplo do nowcast (ex.: sequência de mapas de precipitação por lead time) -->
+<!-- ![Exemplo de nowcast](docs/exemplo_nowcast.gif) -->
 
 ---
 
@@ -17,7 +28,7 @@ O domínio padrão do exemplo é configurável via `src/parameters/nowcasting_pa
 ## Estrutura
 
 ```
-atmosferic-datascience/
+atmospheric-datascience/
 ├── src/
 │   ├── download/       # Download GOES (cache, GOES-19/16 por data)
 │   ├── read/           # Leitura e regrid
